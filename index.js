@@ -5,9 +5,20 @@ var inefficient = require('./modules/sorts/inefficient.js');
 var simple = require('./modules/sorts/simple.js');
 
 var x = [1,5,7,2,43,6,26,7,2356,7,346,1,42,0];
-// var x = ['a', 'b','d', 'c','h','z','a','y','w','m'];
-//var x = ['apples', 'oranges', 'banannas', 'pears', 'grapes', 'carrots', 'squash', 'lettuce'];
+var y = ['a', 'b','d', 'c','h','z','a','y','w','m'];
+var z = ['apples', 'oranges', 'banannas', 'pears', 'grapes', 'carrots', 'squash', 'lettuce'];
 
+console.log('Array of Integers');
 console.log(x);
-var y = simple.selection(x);
+x = simple.selection(x);
+console.log(x);
+
+console.log('Array of Characters');
 console.log(y);
+y = simple.selection(y);
+console.log(y);
+
+console.log('Array of Strings');
+console.log(z);
+z = simple.selection(z);
+console.log(z);
