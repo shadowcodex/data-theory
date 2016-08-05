@@ -28,7 +28,7 @@ module.exports = {
         });
     },
     'comb': function(a) {
-        var n = a.length, gap = n, shrink = 1.3, temp, swapped, ignorePass1 = true;
+        var n = a.length, gap = n, shrink = 1.3, swapped, ignorePass1 = true;
         do {
             gap = Math.floor(gap/shrink);
             if(gap < 1)
@@ -43,7 +43,7 @@ module.exports = {
                 }
                 i++;
             }while(i+gap < n);
-        }while((gap > 1 && swapped == true) || ignorePass1);
+        }while(gap > 1 && (swapped == true || ignorePass1));
     },
     // 'comb2': function(a) {
     //     var gap = a.length;
