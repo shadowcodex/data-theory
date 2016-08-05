@@ -12,8 +12,7 @@ sorts and data algorithms into their projects easily.
 If you have things you would like to add to contribute, please do via a 
 Pull Request. Issues? File them in issues.
 
-This will be discussed more over at [http://learning.10ksoft.com](http://learning.10ksoft.com) 
-once I finish a base project. I'll write up a full tutorial and article 
+Once I finish a base project. I'll write up a full tutorial and article 
 about the sorting algorithms.
 
 ## Current Array Sorting Algorithms
