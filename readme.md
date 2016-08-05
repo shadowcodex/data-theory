@@ -2,7 +2,7 @@
 
 This is a collection of Data Science and Theory implementations. I know there are a lot of 
 things out there that do these same things, but I wanted to create my own library
-for this. This helps me learn, and gives another resource for others to learn with. 
+for this. This helps me learn / keep knowledge sharp, and gives another resource for others to learn with. 
 I chose to do this in javascript because that is the language I enjoy
 the most.
 
