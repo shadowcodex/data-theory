@@ -45,28 +45,7 @@ module.exports = {
             }while(i+gap < n);
         }while(gap > 1 && (swapped == true || ignorePass1));
     },
-    // 'comb2': function(a) {
-    //     var gap = a.length;
-    //     var shrink = 1.3;
-    //     var swapped = true;
+    'cocktail': function(a){
         
-    //     while(gap != 1 && swapped) {
-    //         gap = parseInt(gap / shrink);
-            
-    //         if(gap < 1) {
-    //             gap = 1;
-    //         }
-            
-    //         var i = 0;
-    //         swapped = false;
-            
-    //         while(i+gap < a.length) {
-    //             if(a[i] < a[i+gap]) {
-    //                 common.swap(a, i, i+gap);
-    //                 swapped = true;
-    //             }
-    //             i++;
-    //         }
-    //     }
-    // }
+    }
 }
