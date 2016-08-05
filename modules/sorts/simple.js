@@ -3,8 +3,8 @@ var cstuff = require('../common.js');
 module.exports = {
     'insertion': function(a) {
         for(var i=1; i < a.length; i++) {
-            x = a[i];
-            j = i-1;
+            var x = a[i];
+            var j = i-1;
             while(j>=0 && a[j] > x) {
                 a[j+1] = a[j];
                 j = j -1;
