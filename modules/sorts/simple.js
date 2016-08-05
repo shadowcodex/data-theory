@@ -1,5 +1,5 @@
 /* eslint-env node */
-var cstuff = require('../common.js');
+var common = require('../common.js');
 module.exports = {
     'insertion': function(a) {
         for(var i=1; i < a.length; i++) {
@@ -23,7 +23,7 @@ module.exports = {
                 }
             }
             if(iMin != j) {
-                a = cstuff.swap(a, j, iMin);
+                a = common.swap(a, j, iMin);
             }
         }
         return a;
