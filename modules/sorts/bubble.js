@@ -46,6 +46,24 @@ module.exports = {
         }while(gap > 1 && (swapped == true || ignorePass1));
     },
     'cocktail': function(a){
-        
+        var swapped, i, n=a.length - 1;
+        do {
+            swapped = false;
+            for(i=0;i<n;i++){
+                if(a[i]>a[i+1]){
+                    common.swap(a, i, i+1);
+                    swapped = true;
+                }
+            }
+            if(!swapped)
+                break;
+            swapped = false;
+            for(i=n;i>0;i--){
+                if(a[i]>a[i+1]){
+                    common.swap(a, i, i+1);
+                    swapped = true;
+                }
+            }
+        } while(swapped);
     }
 }

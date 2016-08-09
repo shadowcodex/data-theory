@@ -4,6 +4,7 @@ var distribution = require('./modules/sorts/distribution.js');
 //var efficient = require('./modules/sorts/efficient.js');
 var inefficient = require('./modules/sorts/inefficient.js');
 var simple = require('./modules/sorts/simple.js');
+var common = require('./modules/common.js');
 
 var x = [ 1, 5, 7, 2, 43, 6, 26, 7, 2356, 7, 346, 1, 42, 0 ];
 var y = [ 'a', 'b', 'd', 'c', 'h', 'z', 'a', 'y', 'w', 'm' ];
@@ -11,15 +12,16 @@ var z = ['apples', 'oranges', 'banannas', 'pears', 'grapes', 'carrots', 'squash'
 
 console.log('Array of Integers');
 console.log(x);
-bubble.comb(x);
+inefficient.stooge(x);
+// common.shuffle(x);
 console.log(x);
 
 console.log('Array of Characters');
 console.log(y);
-bubble.comb(y);
+inefficient.stooge(y);
 console.log(y);
 
 console.log('Array of Strings');
 console.log(z);
-bubble.comb(z);
+inefficient.stooge(z);
 console.log(z);

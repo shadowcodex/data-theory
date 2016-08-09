@@ -29,12 +29,12 @@ about the sorting algorithms.
 | Bubble Sort          | bubble.bubble(data)           | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Shell Sort           | bubble.shell(data)            | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Comb Sort            | bubble.comb(data)             | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
-| Cocktail Sort        | bubble.cocktail(data)         | ![status](https://img.shields.io/badge/status-in%20progress-yellow.svg)  |
+| Cocktail Sort        | bubble.cocktail(data)         | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Counting Sort        | distribution.counting(data)   | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
 | Bucket Sort          | distribution.bucket(data)     | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
 | Radix Sort           | distribution.radix(data)      | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
-| Bogo Sort            | inefficient.bogo(data)        | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
-| Stooge Sort          | inefficient.stooge(data)      | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
+| Bogo Sort            | inefficient.bogo(data)        | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
+| Stooge Sort          | inefficient.stooge(data)      | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 
 ## Current List of Data Types
 
