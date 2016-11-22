@@ -44,7 +44,7 @@ Link for reference of data types: [https://en.wikipedia.org/wiki/List_of_data_st
 |-----------------------------|----------------------------------------------------------------------| 
 | array                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
 | dynamic array               | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| stack                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
+| stack                       | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) | 
 | tree                        | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
 | balanced tree               | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
 | container                   | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
@@ -66,4 +66,10 @@ Link for reference of data types: [https://en.wikipedia.org/wiki/List_of_data_st
 | double ended queue          | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
 | double ended priority queue | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
 
+### Note for contributors
 
+To make doc generation work, change line #18 in `node_modules\grunt-mrdoc\tasks\mrdoc.js` to:
+
+```
+	var pluginPath = path.resolve(__dirname, '../../../'),
+```

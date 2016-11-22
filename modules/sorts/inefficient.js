@@ -17,7 +17,7 @@ module.exports = {
                 stoogeSort(a, i+t, j);
                 stoogeSort(a, i, j-t);
             }
-        }
+        };
         stoogeSort(a, 0, a.length - 1);
     }
-}
+};

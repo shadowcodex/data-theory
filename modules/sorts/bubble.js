@@ -11,7 +11,7 @@ module.exports = {
                     swapped = true;
                 }
             }
-        }while(swapped == true);
+        }while(swapped === true);
     },
     'shell': function(a) {
         var gaps = [701,301,132,57,23,10,4,1], temp, n = a.length;
@@ -33,7 +33,7 @@ module.exports = {
             gap = Math.floor(gap/shrink);
             if(gap < 1)
                 gap = 1;
-            var i = 0
+            var i = 0;
             swapped = false;
             do{
                 if(a[i] > a[i+gap]) {
@@ -43,7 +43,7 @@ module.exports = {
                 }
                 i++;
             }while(i+gap < n);
-        }while(gap > 1 && (swapped == true || ignorePass1));
+        }while(gap > 1 && (swapped === true || ignorePass1));
     },
     'cocktail': function(a){
         var swapped, i, n=a.length - 1;
@@ -66,4 +66,4 @@ module.exports = {
             }
         } while(swapped);
     }
-}
+};

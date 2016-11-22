@@ -26,5 +26,10 @@ module.exports = {
             }
         }
         return sorted;
+    },
+    'copy': function(a, b){
+        for(var i = 0; i < a.length; i++){
+            a[i] = b[i];
+        }
     }
-}
+};
