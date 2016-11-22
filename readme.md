@@ -30,41 +30,42 @@ about the sorting algorithms.
 | Shell Sort           | bubble.shell(data)            | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Comb Sort            | bubble.comb(data)             | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Cocktail Sort        | bubble.cocktail(data)         | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
-| Counting Sort        | distribution.counting(data)   | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
-| Bucket Sort          | distribution.bucket(data)     | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
-| Radix Sort           | distribution.radix(data)      | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     |
+| Counting Sort        | distribution.counting(data)   | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
+| Bucket Sort          | distribution.bucket(data)     | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
+| Radix Sort           | distribution.radix(data)      | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Bogo Sort            | inefficient.bogo(data)        | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 | Stooge Sort          | inefficient.stooge(data)      | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
+| Codex Sort           | other.codexSort(data)         | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) |
 
 ## Current List of Data Types
 
 Link for reference of data types: [https://en.wikipedia.org/wiki/List_of_data_structures](https://en.wikipedia.org/wiki/List_of_data_structures)
 
-| Data Type                   | Status                                                               | 
-|-----------------------------|----------------------------------------------------------------------| 
-| array                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| dynamic array               | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
+| Data Type                   | Status                                                                   | 
+|-----------------------------|--------------------------------------------------------------------------| 
+| array                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| dynamic array               | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
 | stack                       | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) | 
-| tree                        | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| balanced tree               | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| container                   | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| dictionary                  | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| graph adjacency list        | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| graph adjacency matrix      | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| graph incidence matrix      | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| list                        | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| linked list                 | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| doubly linked list          | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| multiply linked list        | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| circular linked list        | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| map                         | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| multimap                    | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| set                         | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| multiset                    | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| queue                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| priority queue              | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| double ended queue          | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
-| double ended priority queue | ![status](https://img.shields.io/badge/status-not%20started-red.svg) | 
+| tree                        | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| balanced tree               | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| container                   | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| dictionary                  | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| graph adjacency list        | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| graph adjacency matrix      | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| graph incidence matrix      | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| list                        | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| linked list                 | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| doubly linked list          | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| multiply linked list        | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| circular linked list        | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| map                         | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| multimap                    | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| set                         | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| multiset                    | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| queue                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| priority queue              | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| double ended queue          | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
+| double ended priority queue | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | 
 
 ### Note for contributors
 
