@@ -21,6 +21,8 @@ var x = [1,5,7,2,43,6,26,7,2356,7,346,1,42,0];
 // console.log(theStack.pop());
 // console.log(theStack.pop());
 
-for(var i=0; i < x.length; i++){
-    console.log(dt.isPrime(x[i]), x[i]);    
-}
+// for(var i=0; i < x.length; i++){
+//     console.log(dt.isPrime(x[i]), x[i]);    
+// }
+
+//console.log(dt.continuingFraction.decimal(x));

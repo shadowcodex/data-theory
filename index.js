@@ -6,3 +6,4 @@ exports.simple = require('./modules/sorts/simple.js');
 exports.other = require('./modules/sorts/other.js');
 exports.Stack = require('./modules/data-types/stack.js');
 exports.isPrime = require('./modules/algorithms/is-prime.js');
+exports.continuingFraction = require('./modules/algorithms/continuing-fraction.js');
