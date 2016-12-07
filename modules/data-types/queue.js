@@ -5,7 +5,7 @@
  *      var queue = new dt.Queue();
  */
 var Queue = function(){
-        // Initialize the stack as a single array
+        // Initialize the queue as a single array
         this.values = [];
 };
 
@@ -37,7 +37,7 @@ Queue.prototype.enqueue = function(value) {
  *      console.log(queue);
  *      //=>  ['world','hello']  
  * 
- *      stack.dequeue();
+ *      queue.dequeue();
  *
  *      console.log(queue);
  *      //=>  ['world']
