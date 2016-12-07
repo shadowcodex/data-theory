@@ -26,7 +26,7 @@ Link for reference of data types: [https://en.wikipedia.org/wiki/List_of_data_st
 | multimap                    | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
 | set                         | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
 | multiset                    | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
-| queue                       | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
+| queue                       | ![status](https://img.shields.io/badge/status-completed-brightgreen.svg) | [View Source](https://github.com/shadowcodex/data-theory/blob/master/modules/data-types/queue.js) |
 | priority queue              | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
 | double ended queue          | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
 | double ended priority queue | ![status](https://img.shields.io/badge/status-not%20started-red.svg)     | |
