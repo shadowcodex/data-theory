@@ -1,5 +1,4 @@
 var assert = require('assert');
-let ptime = require('quick-ptime');
 const { stacks } = require('../index');
 
 describe('Stack', function() {

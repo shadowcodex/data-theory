@@ -8,7 +8,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "npx mocha"
+    "test": "npx mocha",
+    "bench:stacks": "node benchmark/stacks.js",
+    "bench:queues": "node benchmark/queues.js"
   },
   "devDependencies": {
     "mocha": "^5.2.0"
