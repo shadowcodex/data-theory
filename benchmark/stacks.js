@@ -31,4 +31,4 @@ ptime.setTime('parraystack100000');
 for(let i = 0; i < 100000; i++) {
     stack.pop()
 }
-console.log("Pop Array 100,000 Stack timing:", ptime.elapsedTime('parraystack100000').formatted);
+console.log("Pop 100,000 Array Stack timing:", ptime.elapsedTime('parraystack100000').formatted);

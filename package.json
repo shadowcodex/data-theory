@@ -9,6 +9,7 @@
   "private": false,
   "scripts": {
     "test": "npx mocha",
+    "bench:all": "node benchmark/stacks.js && node benchmark/queues.js",
     "bench:stacks": "node benchmark/stacks.js",
     "bench:queues": "node benchmark/queues.js"
   },
