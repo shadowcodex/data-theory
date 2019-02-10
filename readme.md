@@ -19,3 +19,29 @@ I want to walk the walk before I talk the talk. Using this repository.
 As theories and structures are built, I'll list them under this heading.
 
 > You won't see a todo list or a target list this time around. I'll take suggestions as issues on the repository, but I'm going to focus on building commong structures and items one at a time. One thing I have learned as a developer is never get ahead of yourself, you can get paralyzed with planning and expectations.
+
+- `Stack`: based on a linked list (slow)
+- `ArrayStack`: based on JS array (fast)
+- `Queue`: based on a linked list (fast)
+- `ArrayQueue`: based on JS array (slow)
+
+## Use in your projects
+
+```
+npm install data-theory
+```
+
+```
+yarn add data-theory
+```
+
+## Usage
+
+```javascript
+const { queues } = require('data-theory');
+
+let queue = new queues.Queue();
+
+queue.enqueue('item'); // 1
+queue.dequeue(); // 'item'
+```
