@@ -1,76 +1,111 @@
 var assert = require('assert');
 const { stacks } = require('../index');
 
-describe('Stack', function() {
+describe('LinkedStack', function() {
   it('should make a new stack', function() {
-    const stack = new stacks.Stack();
+    const stack = new stacks.LinkedStack();
     assert.equal(stack.height(), 0);    
   });
 
   it('should push an item on to the stack', function() {
-    let stack = new stacks.Stack();
-    stack.push('item');
-
-    assert.equal(stack.peek(), 'item');
+    let stack = new stacks.LinkedStack();
+    stack.push('item');    
+    
+    assert.equal(stack.top(), 'item');
   });
 
   it('should pop an item off the stack', function() {
-    let stack = new stacks.Stack();
+    let stack = new stacks.LinkedStack();
     stack.push('item');
-    let value = stack.pop();
-    assert.equal(value, 'item');
+    stack.pop();
+
+    assert.equal(stack.top(), undefined);
   });
 
-  it('should push three items on and pop them off in order', function() {
-    let stack = new stacks.Stack();
+  it('should push three items on and pop tone off leaving 2 items', function() {
+    let stack = new stacks.LinkedStack();
     stack.push('item1');
     stack.push('item2');
     stack.push('item3');
 
-    let value = stack.pop();
-    assert.equal(value, 'item3');
-    
-    value = stack.pop();
-    assert.equal(value, 'item2');
-    
-    value = stack.pop();
-    assert.equal(value, 'item1');
+    stack.pop();
+    assert.equal(stack.height(), 2);
+    assert.equal(stack.top(), 'item2');   
   });
 });
 
-describe('Array Stack', function() {
+
+
+
+
+
+describe('Unbounded Array Stack', function() {
   it('should make a new stack', function() {
-    const stack = new stacks.ArrayStack();
+    const stack = new stacks.UArrayStack();
     assert.equal(stack.height(), 0);    
   });
 
   it('should push an item on to the stack', function() {
-    let stack = new stacks.ArrayStack();
+    let stack = new stacks.UArrayStack();
     stack.push('item');
 
-    assert.equal(stack.peek(), 'item');
+    assert.equal(stack.top(), 'item');
   });
 
   it('should pop an item off the stack', function() {
-    let stack = new stacks.ArrayStack();
+    let stack = new stacks.UArrayStack();
     stack.push('item');
-    let value = stack.pop();
-    assert.equal(value, 'item');
+    stack.pop();
+    
+    assert.equal(stack.top(), undefined);
   });
 
-  it('should push three items on and pop them off in order', function() {
-    let stack = new stacks.ArrayStack();
+  it('should push three items on and pop tone off leaving 2 items', function() {
+    let stack = new stacks.UArrayStack();
     stack.push('item1');
     stack.push('item2');
     stack.push('item3');
 
-    let value = stack.pop();
-    assert.equal(value, 'item3');
+    stack.pop();
+    assert.equal(stack.height(), 2);
+    assert.equal(stack.top(), 'item2');   
+  });
+});
+
+
+
+
+
+
+describe('Bounded Array Stack', function() {
+  it('should make a new stack', function() {
+    const stack = new stacks.BArrayStack();
+    assert.equal(stack.height(), 0);    
+  });
+
+  it('should push an item on to the stack', function() {
+    let stack = new stacks.BArrayStack();
+    stack.push('item');
+
+    assert.equal(stack.top(), 'item');
+  });
+
+  it('should pop an item off the stack', function() {
+    let stack = new stacks.BArrayStack();
+    stack.push('item');
+    stack.pop();
     
-    value = stack.pop();
-    assert.equal(value, 'item2');
-    
-    value = stack.pop();
-    assert.equal(value, 'item1');
+    assert.equal(stack.top(), undefined);
+  });
+
+  it('should push three items on and pop tone off leaving 2 items', function() {
+    let stack = new stacks.BArrayStack();
+    stack.push('item1');
+    stack.push('item2');
+    stack.push('item3');
+
+    stack.pop();
+    assert.equal(stack.height(), 2);
+    assert.equal(stack.top(), 'item2');   
   });
 });
