@@ -1,0 +1,21 @@
+{
+  "name": "data-theory",
+  "version": "0.0.1",
+  "description": "A collection of data theory and structures in JavaScript.",
+  "main": "index.js",
+  "repository": "https://github.com/shadowcodex/data-theory.git",
+  "author": "shadowcodex <jsduncan98@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "npx mocha",
+    "bench:stacks": "node benchmark/stacks.js",
+    "bench:queues": "node benchmark/queues.js"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "quick-ptime": "^1.0.0"
+  }
+}
