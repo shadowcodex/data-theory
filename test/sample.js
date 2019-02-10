@@ -1,4 +1,6 @@
 var assert = require('assert');
+let ptime = require('quick-ptime');
+
 describe('Array', function() {
   describe('#indexOf()', function() {
     it('should return -1 when the value is not present', async function() {
