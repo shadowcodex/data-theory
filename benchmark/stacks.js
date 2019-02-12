@@ -2,195 +2,70 @@ let { stacks } = require('./../index');
 let ptime = require('quick-ptime');
 const Table = require('cli-table');
 
+const standard = async (name, func, value) => {
+    const result = [
+        (await ptime.runFunctionRounds(
+            `${name} 100000`,
+            func,
+            [value],
+            100000,
+            true
+        )).formatted,
+        (await ptime.runFunctionRounds(
+            `${name} 1000000`,
+            func,
+            [value],
+            1000000,
+            true
+        )).formatted,
+        (await ptime.runFunctionRounds(
+            `${name} 10000000`,
+            func,
+            [value],
+            10000000,
+            true
+        )).formatted,
+        (await ptime.runFunctionAverage(
+            `${name} 1`,
+            func,
+            [value],
+            1000000,
+            true
+        )).formatted
+    ]
 
-// setup stacks
-let linkedStack = new stacks.LinkedStack();
-let uArrayStack = new stacks.UArrayStack();
-let bArrayStack = new stacks.BArrayStack(1100001);
-
-/**
- * PUSH STUFF
- */
-
-// push 100,000 items onto the stack
-ptime.setTime('stack100000');
-for(let i = 0; i < 100000; i++) {
-    linkedStack.push('value');
+    let str = {};
+    str[name] = result
+    return str;
 }
-let stackTime = ptime.elapsedTime('stack100000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
 
-// push 1,000,000 items onto the stack
-ptime.setTime('stack1000000');
-for(let i = 0; i < 1000000; i++) {
-    linkedStack.push('value');
+const run = async () => {
+    let results = []
+    let linkedStack = new stacks.LinkedStack();
+    let uArrayStack = new stacks.UArrayStack();
+    let bArrayStack = new stacks.BArrayStack(12100000);
+
+    results.push(
+        await standard("LinkedStack Push", linkedStack.push.bind(linkedStack), 1),
+        await standard("UArrayStack Push", uArrayStack.push.bind(uArrayStack), 1),
+        await standard("BArrayStack Push", bArrayStack.push.bind(bArrayStack), 1),
+        await standard("LinkedStack Top", linkedStack.top.bind(linkedStack), 1),
+        await standard("UArrayStack Top", uArrayStack.top.bind(uArrayStack), 1),
+        await standard("BArrayStack Top", bArrayStack.top.bind(bArrayStack), 1),
+        await standard("LinkedStack Pop", linkedStack.pop.bind(linkedStack), 1),
+        await standard("UArrayStack Pop", uArrayStack.pop.bind(uArrayStack), 1),
+        await standard("BArrayStack Pop", bArrayStack.pop.bind(bArrayStack), 1),
+    )    
+
+    return results;
 }
-let mStackTime = ptime.elapsedTime('stack1000000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
 
-// push 1 item onto the stack
-ptime.setTime('stack1');
-for(let i = 0; i < 1; i++) {
-    linkedStack.push('value');
-}
-let sStackTime = ptime.elapsedTime('stack1');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
+run().then(value => {
+    const table = new Table({
+        head: ['Stack Operation', '100,000 items', '1,000,000 items', '10,000,000 items', '1 item AVG']
+    });
 
+    table.push(...value);
 
-
-
-
-// push 100,000 items onto the stack
-ptime.setTime('ustack100000');
-for(let i = 0; i < 100000; i++) {
-    uArrayStack.push('value');
-}
-let ustackTime = ptime.elapsedTime('ustack100000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1,000,000 items onto the stack
-ptime.setTime('ustack1000000');
-for(let i = 0; i < 1000000; i++) {
-    uArrayStack.push('value');
-}
-let umStackTime = ptime.elapsedTime('ustack1000000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1 item onto the stack
-ptime.setTime('ustack1');
-for(let i = 0; i < 1; i++) {
-    uArrayStack.push('value');
-}
-let usStackTime = ptime.elapsedTime('ustack1');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-
-
-
-// push 100,000 items onto the stack
-ptime.setTime('bstack100000');
-for(let i = 0; i < 100000; i++) {
-    bArrayStack.push('value');
-}
-let bstackTime = ptime.elapsedTime('bstack100000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1,000,000 items onto the stack
-ptime.setTime('bstack1000000');
-for(let i = 0; i < 1000000; i++) {
-    bArrayStack.push('value');
-}
-let bmStackTime = ptime.elapsedTime('bstack1000000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1 item onto the stack
-ptime.setTime('bstack1');
-for(let i = 0; i < 1; i++) {
-    bArrayStack.push('value');
-}
-let bsStackTime = ptime.elapsedTime('bstack1');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-
-
-
-/**
- * POP STUFF
- */
-
-// push 100,000 items onto the stack
-ptime.setTime('pstack100000');
-for(let i = 0; i < 100000; i++) {
-    linkedStack.pop('value');
-}
-let pstackTime = ptime.elapsedTime('pstack100000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1,000,000 items onto the stack
-ptime.setTime('pstack1000000');
-for(let i = 0; i < 1000000; i++) {
-    linkedStack.pop('value');
-}
-let pmStackTime = ptime.elapsedTime('pstack1000000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1 item onto the stack
-ptime.setTime('pstack1');
-for(let i = 0; i < 1; i++) {
-    linkedStack.pop('value');
-}
-let psStackTime = ptime.elapsedTime('pstack1');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-
-
-// push 100,000 items onto the stack
-ptime.setTime('upstack100000');
-for(let i = 0; i < 100000; i++) {
-    uArrayStack.pop('value');
-}
-let upstackTime = ptime.elapsedTime('upstack100000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1,000,000 items onto the stack
-ptime.setTime('upstack1000000');
-for(let i = 0; i < 1000000; i++) {
-    uArrayStack.pop('value');
-}
-let upmStackTime = ptime.elapsedTime('upstack1000000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1 item onto the stack
-ptime.setTime('upstack1');
-for(let i = 0; i < 1; i++) {
-    uArrayStack.pop('value');
-}
-let upsStackTime = ptime.elapsedTime('upstack1');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-
-
-
-
-// push 100,000 items onto the stack
-ptime.setTime('bpstack100000');
-for(let i = 0; i < 100000; i++) {
-    bArrayStack.pop('value');
-}
-let bpstackTime = ptime.elapsedTime('bpstack100000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1,000,000 items onto the stack
-ptime.setTime('bpstack1000000');
-for(let i = 0; i < 1000000; i++) {
-    bArrayStack.pop('value');
-}
-let bpmStackTime = ptime.elapsedTime('bpstack1000000');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-// push 1 item onto the stack
-ptime.setTime('bpstack1');
-for(let i = 0; i < 1; i++) {
-    bArrayStack.pop('value');
-}
-let bpsStackTime = ptime.elapsedTime('bpstack1');
-// console.log("Push 100,000 Linked Stack timing:", ptime.elapsedTime('stack100000').formatted);
-
-
-/// Output results
-
-const table = new Table({
-    head: ['Stack Operation', '100,000 items', '1,000,000 items', '1 item']
+    console.log(table.toString())
 });
-
-
-table.push(
-    ['Linked List Stack Push', stackTime.formatted, mStackTime.formatted, sStackTime.formatted],
-    ['Unbounded Array Stack Push', ustackTime.formatted, umStackTime.formatted, usStackTime.formatted],
-    ['Bounded Array Stack Push', bstackTime.formatted, bmStackTime.formatted, bsStackTime.formatted],
-    ['Linked List Stack Pop', pstackTime.formatted, pmStackTime.formatted, psStackTime.formatted],
-    ['Unbounded Array Stack Pop', upstackTime.formatted, upmStackTime.formatted, upsStackTime.formatted],
-    ['Bounded Array Stack Pop', bpstackTime.formatted, bpmStackTime.formatted, bpsStackTime.formatted],
-);
-
-console.log(table.toString());
