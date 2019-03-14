@@ -1,0 +1,7 @@
+{
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true
+}
