@@ -1,8 +1,12 @@
 let { stacks } = require('./../index');
 let ptime = require('quick-ptime');
 const Table = require('cli-table');
+var ProgressBar = require('progress');
+
+let bar;
 
 const standard = async (name, func, value) => {
+    // console.log("Running...", name);
     const result = [
         (await ptime.runFunctionRounds(
             `${name} 100000`,
@@ -36,6 +40,7 @@ const standard = async (name, func, value) => {
 
     let str = {};
     str[name] = result
+    bar.tick();
     return str;
 }
 
@@ -44,7 +49,8 @@ const run = async () => {
     let linkedStack = new stacks.LinkedStack();
     let uArrayStack = new stacks.UArrayStack();
     let bArrayStack = new stacks.BArrayStack(12100000);
-
+    bar = new ProgressBar(':bar :percent :elapseds total, completes in :etas', { total: 10 });
+    bar.tick();
     results.push(
         await standard("LinkedStack Push", linkedStack.push.bind(linkedStack), 1),
         await standard("UArrayStack Push", uArrayStack.push.bind(uArrayStack), 1),

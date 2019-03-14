@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "cli-table": "^0.3.1",
+    "progress": "^2.0.3",
     "quick-ptime": "^1.0.0"
   }
 }
