@@ -5,82 +5,108 @@ var ProgressBar = require('progress');
 
 let bar;
 
-const standard = async (name, func, value) => {
-  // console.log("Running...", name);
-  const result = [
-    (await ptime.runFunctionRounds(`${name} 100000`, func, [value], 100000, true)).formatted,
-    (await ptime.runFunctionRounds(`${name} 1000000`, func, [value], 1000000, true)).formatted,
-    (await ptime.runFunctionRounds(`${name} 10000000`, func, [value], 10000000, true)).formatted,
-    (await ptime.runFunctionAverage(`${name} 1`, func, [value], 1000000, true)).formatted,
-  ];
-
-  let str = {};
-  str[name] = result;
-  bar.tick();
-  return str;
-};
-
-const run = async () => {
-  let results = [];
-  let linkedStack = new stacks.LinkedStack();
-  let uArrayStack = new stacks.UArrayStack();
-  let bArrayStack = new stacks.BArrayStack(12100000);
-  bar = new ProgressBar(':bar :percent :elapseds total, completes in :etas', { total: 10 });
-  bar.tick();
+const testStandard = async (name, adt, count) => {
+  const iADT = new adt(count);
+  bar.tick({
+    token1: `${name} adt setup`,
+  });
+  results = [];
   results.push(
-    await standard('LinkedStack Push', linkedStack.push.bind(linkedStack), 1),
-    await standard('UArrayStack Push', uArrayStack.push.bind(uArrayStack), 1),
-    await standard('BArrayStack Push', bArrayStack.push.bind(bArrayStack), 1),
-    await standard('LinkedStack Top', linkedStack.top.bind(linkedStack), 1),
-    await standard('UArrayStack Top', uArrayStack.top.bind(uArrayStack), 1),
-    await standard('BArrayStack Top', bArrayStack.top.bind(bArrayStack), 1),
-    await standard('LinkedStack Pop', linkedStack.pop.bind(linkedStack), 1),
-    await standard('UArrayStack Pop', uArrayStack.pop.bind(uArrayStack), 1),
-    await standard('BArrayStack Pop', bArrayStack.pop.bind(bArrayStack), 1)
+    (await ptime.runFunctionRounds(`${name} enqueue ${count}`, iADT.enqueue.bind(iADT), [1], count, true)).formatted
   );
+  bar.tick({
+    token1: `${name} enqueue ${count}`,
+  });
+  results.push(
+    (await ptime.runFunctionRounds(`${name} peek ${count}`, iADT.peek.bind(iADT), [1], count, true)).formatted
+  );
+  bar.tick({
+    token1: `${name} peek ${count}`,
+  });
+  results.push(
+    (await ptime.runFunctionRounds(`${name} dequeue ${count}`, iADT.dequeue.bind(iADT), [1], count, true)).formatted
+  );
+  bar.tick({
+    token1: `${name} dequeue ${count}`,
+  });
 
   return results;
 };
 
+const run = async () => {
+  bar = new ProgressBar(':bar Last Completed :token1 :percent :elapseds total, completes in :etas', { total: 34 });
+  bar.tick({
+    token1: 'progress bar',
+  });
+
+  let results = {};
+
+  results['LinkedQueue Enqueue'] = [];
+  results['UArrayQueue Enqueue'] = [];
+  results['BFltArrayQueue Enqueue'] = [];
+  results['BFixArrayQueue Enqueue'] = [];
+
+  results['LinkedQueue Peek'] = [];
+  results['UArrayQueue Peek'] = [];
+  results['BFltArrayQueue Peek'] = [];
+  results['BFixArrayQueue Peek'] = [];
+
+  results['LinkedQueue Dequeue'] = [];
+  results['UArrayQueue Dequeue'] = [];
+  results['BFltArrayQueue Dequeue'] = [];
+  results['BFixArrayQueue Dequeue'] = [];
+
+  bar.tick({
+    token1: 'result sets setup',
+  });
+
+  const lQueue100000 = await testStandard('LinkedQueue', queues.LinkedQueue, 100000);
+  const lQueue1000000 = await testStandard('LinkedQueue', queues.LinkedQueue, 1000000);
+  //   const lQueue10000000 = await testStandard('LinkedQueue', queues.LinkedQueue, 10000000);
+  results['LinkedQueue Enqueue'].push(lQueue100000[0], lQueue1000000[0]);
+  results['LinkedQueue Peek'].push(lQueue100000[1], lQueue1000000[1]);
+  results['LinkedQueue Dequeue'].push(lQueue100000[2], lQueue1000000[2]);
+
+  const bfltQueue100000 = await testStandard('BFltArrayQueue', queues.BFltArrayQueue, 100000);
+  const bfltQueue1000000 = await testStandard('BFltArrayQueue', queues.BFltArrayQueue, 1000000);
+  //   const bfltQueue10000000 = await testStandard('BFltArrayQueue', queues.BFltArrayQueue, 10000000);
+  results['BFltArrayQueue Enqueue'].push(bfltQueue100000[0], bfltQueue1000000[0]);
+  results['BFltArrayQueue Peek'].push(bfltQueue100000[1], bfltQueue1000000[1]);
+  results['BFltArrayQueue Dequeue'].push(bfltQueue100000[2], bfltQueue1000000[2]);
+
+  const uQueue100000 = await testStandard('UArrayQueue', queues.UArrayQueue, 100000);
+  const uQueue1000000 = await testStandard('UArrayQueue', queues.UArrayQueue, 1000000);
+  //   const uQueue10000000 = await testStandard('UArrayQueue', queues.UArrayQueue, 10000000);
+  results['UArrayQueue Enqueue'].push(uQueue100000[0], uQueue1000000[0]);
+  results['UArrayQueue Peek'].push(uQueue100000[1], uQueue1000000[1]);
+  results['UArrayQueue Dequeue'].push(uQueue100000[2], uQueue1000000[2]);
+
+  const bfixQueue100000 = await testStandard('BFixArrayQueue', queues.BFixArrayQueue, 100000);
+  const bfixQueue1000000 = await testStandard('BFixArrayQueue', queues.BFixArrayQueue, 1000000);
+  //   const bfixQueue10000000 = await testStandard('BFixArrayQueue', queues.BFixArrayQueue, 10000000);
+  results['BFixArrayQueue Enqueue'].push(bfixQueue100000[0], bfixQueue1000000[0]);
+  results['BFixArrayQueue Peek'].push(bfixQueue100000[1], bfixQueue1000000[1]);
+  results['BFixArrayQueue Dequeue'].push(bfixQueue100000[2], bfixQueue1000000[2]);
+
+  let items = [];
+
+  let keys = Object.keys(results);
+  for (let i = 0; i < keys.length; i++) {
+    let item = {};
+    item[keys[i]] = results[keys[i]];
+    items.push(item);
+  }
+
+  return items;
+};
+
 run().then(value => {
   const table = new Table({
-    head: ['Stack Operation', '100,000 items', '1,000,000 items', '10,000,000 items', '1 item AVG'],
+    head: ['Queue Operation', '100,000 items', '1,000,000 items'],
   });
 
   table.push(...value);
 
+  console.log('\n');
   console.log(table.toString());
 });
-
-// let { queues } = require('./../index');
-// let ptime = require('quick-ptime');
-
-// // setup stacks
-// let queue = new queues.Queue();
-// let arrayQueue = new queues.ArrayQueue();
-
-// // enqueue 100,000 items into the queue
-// ptime.setTime('queue100000');
-// for (let i = 0; i < 100000; i++) {
-//   queue.enqueue('value');
-// }
-// console.log('Enqueue 100,000 Queue timing:', ptime.elapsedTime('queue100000').formatted);
-
-// ptime.setTime('arrayqueue100000');
-// for (let i = 0; i < 100000; i++) {
-//   arrayQueue.enqueue('value');
-// }
-// console.log('Enqueue 100,000 Array Queue timing:', ptime.elapsedTime('arrayqueue100000').formatted);
-
-// // dequeue 100,000 items into the queue
-// ptime.setTime('dqueue100000');
-// for (let i = 0; i < 100000; i++) {
-//   queue.dequeue();
-// }
-// console.log('Dequeue 100,000 Queue timing:', ptime.elapsedTime('dqueue100000').formatted);
-
-// ptime.setTime('darrayqueue100000');
-// for (let i = 0; i < 100000; i++) {
-//   arrayQueue.dequeue();
-// }
-// console.log('Dequeue 100,000 Array Queue timing:', ptime.elapsedTime('darrayqueue100000').formatted);

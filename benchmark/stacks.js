@@ -21,11 +21,13 @@ const standard = async (name, func, value) => {
 };
 
 const run = async () => {
+  bar = new ProgressBar(':bar :percent :elapseds total, completes in :etas', { total: 11 });
   let results = [];
   let linkedStack = new stacks.LinkedStack();
   let uArrayStack = new stacks.UArrayStack();
+  bar.tick();
   let bArrayStack = new stacks.BArrayStack(12100000);
-  bar = new ProgressBar(':bar :percent :elapseds total, completes in :etas', { total: 10 });
+
   bar.tick();
   results.push(
     await standard('LinkedStack Push', linkedStack.push.bind(linkedStack), 1),
@@ -49,5 +51,6 @@ run().then(value => {
 
   table.push(...value);
 
+  console.log('\n');
   console.log(table.toString());
 });
