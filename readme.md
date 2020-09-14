@@ -1,3 +1,5 @@
+[![Discord](https://img.shields.io/discord/630805507782868992.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/GghbTQA)
+
 # Data Theory
 
 This is a repository dedicated to data structures and data theory for JavaScript and in the future maybe C++ as Native Node Addons.
